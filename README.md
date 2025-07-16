@@ -9,10 +9,30 @@ Automatically classify text-based safety reports to support proactive risk manag
 ---
 
 ## 📊 Dataset
+
+### Raw Data
+The original dataset `Observations_Raw.xlsx` contained multiple types of observations with the following labels:
+- Pro ACTIVE (Positive Observation)
+- Re ACTIVE (Negative Observation)
+- Unsafe Act
+- Near Miss
+- Others
+
+### Cleaning and Transformation
+To prepare the dataset for binary classification:
+- Only **"Pro ACTIVE (Positive Observation)"** and **"Re ACTIVE (Negative Observation)" / "Unsafe Act"** entries were retained.
+- Removed duplicate/null observations and "Proposed Improvement" reporting type
+- Labels were simplified to:
+  - **Safe** for positive observations
+  - **Unsafe** for negative/unsafe acts
+- A new column `Label` was created to reflect this transformation.
+- The text of observations was preserved in a column named `Observation`.
+- The dataset was then **balanced** by randomly sampling 311 entries from each class, resulting in a final dataset of **622 rows** (311 Safe, 311 Unsafe).
+  
+### Final Dataset
 - Source: `cleaned_and_balanced.xlsx`
 - 622 entries equally distributed between 'Safe' and 'Unsafe'
 - Text-based observations + classification label
-
 ---
 
 ## 🧠 Model Development Steps
@@ -56,16 +76,11 @@ Selected **Logistic Regression** due to its top accuracy and balanced performanc
 ---
 
 ## 📁 Files
+- `Cleaning_Labeling_Safety_Observations (3).ipynb` - Cleaning and transformation notebook
+- `Observations_Raw.xlsx` - Raw Dataset
+- `cleaned_and_balanced.xlsx` - Final Dataset
 - `model_logistic_regression.ipynb` - Final model notebook
-- `cleaned_and_balanced.xlsx` - Dataset
 - `README.md` - This file
-
----
-
-## 🚀 Optional Extensions
-- Add hyperparameter tuning
-- Deploy with Flask or Streamlit
-- Serialize model with `joblib` or `pickle`
 
 ---
 
