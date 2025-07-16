@@ -57,7 +57,6 @@ Selected **Logistic Regression** due to its top accuracy and balanced performanc
 
 ## 📁 Files
 - `model_logistic_regression.ipynb` - Final model notebook
-- `Model_Development_Plan.pptx` - Presentation
 - `cleaned_and_balanced.xlsx` - Dataset
 - `README.md` - This file
 
